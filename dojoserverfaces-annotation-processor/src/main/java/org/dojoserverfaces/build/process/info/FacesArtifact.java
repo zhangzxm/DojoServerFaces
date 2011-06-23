@@ -8,24 +8,20 @@ package org.dojoserverfaces.build.process.info;
 import java.util.Collection;
 
 /**
- * The FacesArtifact class defines a class used to encapsulate
- * information related to the Faces artifacts.
+ * The FacesArtifact class defines a class used to encapsulate information
+ * related to the Faces artifacts.
  */
 
 public interface FacesArtifact {
 
     public enum Type {
-        COMPONENT,
-        BEHAVIOR,
-        CONVERTER,
-        VALIDATOR, 
-        FACELET_TAG
+        COMPONENT, BEHAVIOR, CONVERTER, VALIDATOR, FACELET_TAG
     }
-    
+
     public Type getArtifactType();
-    
+
     public String getUniqueId();
-    
+
     /**
      * Retrieves the class name associated with this artifact.
      * 
@@ -38,8 +34,9 @@ public interface FacesArtifact {
     public String getXmlDescription();
 
     public String getDisplayName();
-    
+
     public String getTagName();
-    
+
     public Collection<AttributeInfo> getAttributes();
+
 }

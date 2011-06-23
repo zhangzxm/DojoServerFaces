@@ -44,4 +44,6 @@ public class BehaviorInfo extends FacesArtifactBase implements InfoHolder {
     public FacesArtifact.Type getArtifactType() {
         return FacesArtifact.Type.BEHAVIOR;
     }
+
+  
 }

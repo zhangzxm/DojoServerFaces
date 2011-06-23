@@ -14,7 +14,7 @@ import org.dojoserverfaces.widget.DojoWidget;
  * Handler for a property that is an id of a component for which we want to
  * retrieve a reference to the dijit object.
  */
-public class DijitProperty extends Property {
+public class DijitProperty extends Property  {
 
     public DijitProperty(String attributeName, String propertyName) {
         super(attributeName, propertyName);
@@ -44,4 +44,6 @@ public class DijitProperty extends Property {
         else
             return null;
     }
+
+  
 }

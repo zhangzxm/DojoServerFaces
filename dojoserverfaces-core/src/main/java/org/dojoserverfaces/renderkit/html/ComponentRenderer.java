@@ -90,14 +90,34 @@ public class ComponentRenderer extends Renderer {
                 StringBuilder widgetCreation = new StringBuilder("var ")
                         .append(component.getId()).append("=")
                         .append(widgetInitialization.toString()).append(';');
-                widgetInitialization = widgetCreation;
+              //  widgetInitialization = widgetCreation;
+                StringBuilder postCreateInitialization = new StringBuilder();
                 for (Property property : postCreateProperties) {
-                    widgetInitialization.append(((PostCreateScript) property)
+
+                    if (null != ((PostCreateScript) property)
                             .getPostCreateInitialization(component,
-                                    component.getId()));
+                                    component.getId())) {
+                        postCreateInitialization
+                                .append(((PostCreateScript) property)
+                                        .getPostCreateInitialization(component,
+                                                component.getId()));
+                    }
+
+                    if (null != ((PostCreateScript) property)
+                            .getPostCreateCode(component)) {
+                        initScriptBlock
+                                .addPostWidgetCreateScript(((PostCreateScript) property)
+                                        .getPostCreateCode(component));
+                    }
                 }
-                widgetInitialization.append(component.getId()).append(
-                        ".startup();");
+                if (postCreateInitialization.length() > 0) {
+                    widgetCreation.append(component.getId()).append(
+                            ".startup();");
+                    widgetInitialization = widgetCreation;
+                }else
+                {
+                    widgetInitialization.append(".startup();");
+                }
             }
             initScriptBlock.addWidgetCreateScript(widgetInitialization
                     .toString());
@@ -106,6 +126,7 @@ public class ComponentRenderer extends Renderer {
             // then it must be an object that will be a widget property
             // so make it a field of the giant addOnLoad function being
             // generated
+            //do we have to addPostCreateCode here??
             String field = component.getId();
             StringBuilder widgetCreation = new StringBuilder(
                     DojoScriptBlockComponent
