@@ -22,4 +22,6 @@ public interface PostCreateScript {
      */
     String getPostCreateInitialization(UIComponent component, String widgetVar);
 
+    String getPostCreateCode(UIComponent component);
+
 }

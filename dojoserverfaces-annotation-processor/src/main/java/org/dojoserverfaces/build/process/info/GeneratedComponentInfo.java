@@ -174,9 +174,15 @@ public class GeneratedComponentInfo extends ComponentInfo {
         // TODO: is this enough?
         if (this.dojoType != null && this.dojoType.startsWith("dojox.mobile.")) {
             this.isMobileWidget = Boolean.TRUE;
-        }
-        else {
-            this.isMobileWidget = Boolean.FALSE;
+
+            // TODO: is this enough?
+            if (this.dojoType != null
+                    && this.dojoType.startsWith("dojox.mobile.")) {
+                this.isMobileWidget = Boolean.TRUE;
+            }
+            else {
+                this.isMobileWidget = Boolean.FALSE;
+            }
         }
     }
 

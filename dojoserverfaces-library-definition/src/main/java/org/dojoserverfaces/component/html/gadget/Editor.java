@@ -50,6 +50,12 @@ class Editor extends WidgetBase {
                     .toString();
         }
 
+        @Override
+        public String getPostCreateCode(UIComponent component) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
     }
 
     /**

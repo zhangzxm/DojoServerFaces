@@ -38,7 +38,11 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
     private static final org.dojoserverfaces.widget.DojoType widgetType =
 <%
 if (context.componentInfo.isWidget){ 
-%>        new org.dojoserverfaces.widget.SimpleWidgetType("${componentInfo.dojoType}", false);  // TODO: FIX ME!!!
+
+
+%>        new org.dojoserverfaces.widget.SimpleWidgetType("${componentInfo.dojoType}",${componentInfo.isMobileWidget});
+
+
 <%
 } else { 
 %>        new org.dojoserverfaces.widget.SimpleObjectType("${componentInfo.dojoType}");
@@ -217,6 +221,20 @@ if (null != context.componentInfo.defaultEvent) { %>
         
         // Make sure there is a script block on the view to which we'll add some script
         org.dojoserverfaces.component.dojo.DojoScriptBlockComponent.addScriptBlockToView(view);
+        
+      	org.dojoserverfaces.component.mobile.MobileTheme mobileTheme =  org.dojoserverfaces.component.mobile.MobileTheme.findMobileTheme(view);
+        if (mobileTheme != null) {
+            if (mobileTheme.getName().equals("auto")) {
+                  org.dojoserverfaces.component.dojo.DojoScriptBlockComponent initScriptBlock = org.dojoserverfaces.component.dojo.DojoScriptBlockComponent
+                        .findInitBlockComponent(view);
+              int begin = widgetType.geTypeName().lastIndexOf(".")+1;
+             // add MobileThemeFiles
+                initScriptBlock.addRequiredThemeFiles( widgetType.geTypeName().substring(begin));
+                return;
+            }
+        }
+        
+        
 <%
 if (null != context.componentInfo.requiredCss && context.componentInfo.requiredCss.length > 0) {%>
         org.dojoserverfaces.component.dojo.DojoStyleComponent styleBlock = org.dojoserverfaces.component.dojo.DojoStyleComponent.findStyleBlockComponent(view);

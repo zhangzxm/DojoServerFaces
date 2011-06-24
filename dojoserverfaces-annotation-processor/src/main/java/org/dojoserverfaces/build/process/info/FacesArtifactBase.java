@@ -1,7 +1,7 @@
 /*******************************************************************************
- * 	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
- * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
- * 	see: http://dojotoolkit.org/license for details
+ *      Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ *      Available via Academic Free License >= 2.1 OR the modified BSD license.
+ *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
 package org.dojoserverfaces.build.process.info;
 
@@ -114,14 +114,14 @@ public abstract class FacesArtifactBase extends InformationCollector implements
         return tagName;
     }
 
-	@Override
-	public Type getArtifactType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        @Override
+        public Type getArtifactType() {
+                // TODO Auto-generated method stub
+                return null;
+        }
 
-	@Override
-	public int compareTo(FacesArtifactBase artifact) {
-		return this.tagName.compareTo(artifact.tagName);
-	}
+        @Override
+        public int compareTo(FacesArtifactBase artifact) {
+                return this.tagName.compareTo(artifact.tagName);
+        }
 }
