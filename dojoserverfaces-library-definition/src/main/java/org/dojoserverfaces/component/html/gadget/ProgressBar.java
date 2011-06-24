@@ -17,7 +17,8 @@ import org.dojoserverfaces.component.html.WidgetBase;
  * JavaScript XHR calls to the server.
  * 
  */
-@Gadget(dojoType = "dijit.ProgressBar")
+@Gadget(dojoType = "dijit.ProgressBar" ,requiredCss = {
+        "dijit/themes/{theme}/document.css"})
 class ProgressBar extends WidgetBase {
 
     /**

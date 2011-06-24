@@ -1,7 +1,7 @@
 /*******************************************************************************
- * 	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
- * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
- * 	see: http://dojotoolkit.org/license for details
+ *      Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ *      Available via Academic Free License >= 2.1 OR the modified BSD license.
+ *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
 package org.dojoserverfaces.build.process.info;
 
@@ -11,8 +11,7 @@ import javax.lang.model.element.TypeElement;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
 
 /**
- * Class used to encapsulate information about a Faces artifact (e.g. component,
- * behavior)
+ * Class used to encapsulate information about a Faces artifact (e.g. component, behavior)
  */
 public abstract class FacesArtifactBase extends InformationCollector implements
         FacesArtifact, Comparable<FacesArtifactBase> {
@@ -32,11 +31,9 @@ public abstract class FacesArtifactBase extends InformationCollector implements
      *            a Behavior object containing the @Behavior annotation to use.
      */
 
-    public FacesArtifactBase(Element element, String displayName,
-            String idPrefix) {
+    public FacesArtifactBase(Element element, String displayName, String idPrefix) {
         setDisplayName(displayName);
-        tagName = GeneratorUtil.makeCamelCase(null, element.getSimpleName()
-                .toString());
+        tagName = GeneratorUtil.makeCamelCase(null, element.getSimpleName().toString());
         uniqueId = new StringBuilder(idPrefix).append(tagName).toString();
         description = GeneratorUtil.getElementComment(element);
         className = ((TypeElement) element).getQualifiedName().toString();
@@ -51,7 +48,7 @@ public abstract class FacesArtifactBase extends InformationCollector implements
     public String getUniqueId() {
         return uniqueId;
     }
-
+    
     /*
      * (non-Javadoc)
      * 
@@ -69,8 +66,7 @@ public abstract class FacesArtifactBase extends InformationCollector implements
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * org.dojoserverfaces.build.process.model.FacesArtifact#getDescription()
+     * @see org.dojoserverfaces.build.process.model.FacesArtifact#getDescription()
      */
     @Override
     public String getDescription() {
@@ -80,8 +76,7 @@ public abstract class FacesArtifactBase extends InformationCollector implements
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * org.dojoserverfaces.build.process.model.FacesArtifact#getXmlDescription()
+     * @see org.dojoserverfaces.build.process.model.FacesArtifact#getXmlDescription()
      */
     @Override
     public String getXmlDescription() {
@@ -91,20 +86,18 @@ public abstract class FacesArtifactBase extends InformationCollector implements
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * org.dojoserverfaces.build.process.model.FacesArtifact#getDisplayName()
+     * @see org.dojoserverfaces.build.process.model.FacesArtifact#getDisplayName()
      */
     @Override
     public String getDisplayName() {
-        // TODO if displayName is null perhaps we can break up tagName into
-        // words
+        // TODO if displayName is null perhaps we can break up tagName into words
         return (null != displayName) ? displayName : tagName;
     }
 
     protected void setDisplayName(String displayName) {
         if (null != displayName) {
             displayName = displayName.trim();
-            if (displayName.isEmpty()) {
+            if (displayName.isEmpty()){
                 displayName = null;
             }
         }
@@ -121,19 +114,14 @@ public abstract class FacesArtifactBase extends InformationCollector implements
         return tagName;
     }
 
-    protected void AddTagNamePrefix(String name,String idPrefix) {
-        this.tagName = GeneratorUtil.makeCamelCase(name, this.tagName);
-        uniqueId = new StringBuilder(idPrefix).append(tagName).toString();
-    }
+        @Override
+        public Type getArtifactType() {
+                // TODO Auto-generated method stub
+                return null;
+        }
 
-    @Override
-    public Type getArtifactType() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int compareTo(FacesArtifactBase artifact) {
-        return this.tagName.compareTo(artifact.tagName);
-    }
+        @Override
+        public int compareTo(FacesArtifactBase artifact) {
+                return this.tagName.compareTo(artifact.tagName);
+        }
 }

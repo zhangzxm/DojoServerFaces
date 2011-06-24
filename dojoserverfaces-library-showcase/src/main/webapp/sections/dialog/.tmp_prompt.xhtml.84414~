@@ -3,6 +3,7 @@
     	Available via Academic Free License >= 2.1 OR the modified BSD license.
     	see: http://dojotoolkit.org/license for details
  -->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <ui:composition
 	xmlns="http://www.w3.org/1999/xhtml"
@@ -13,10 +14,5 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 	xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
 >
-	<h:panelGrid columns="2" styleClass="behavior">
-		<strong>GridAddRow:</strong>
-		<showcase:usage tagName="behaviorGridAddRow" />
-		<strong>GridRemoveSelectedRow:</strong>
-		<showcase:usage tagName="behaviorGridRemoveSelectedRows" />
-	</h:panelGrid>
+	<showcase:usage tagName="dialog" tagAttrs="title duration refocus autofocus draggable" />
 </ui:composition>
