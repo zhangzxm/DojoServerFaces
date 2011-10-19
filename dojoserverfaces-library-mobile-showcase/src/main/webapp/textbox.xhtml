@@ -23,31 +23,31 @@
 	<title>Text Box</title>
 </h:head>
 <h:body>
-	<dsf:scrollableView id="textBoxView" 
-		selected="true" style="width: 300px; text-align: center;">
+	<dsf:view id="textBox">
 		<h:form>
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" style="margin: 8px auto;">
 				<h:outputLabel value="Username: " />
-				<dsf:textBox placeHolder="Enter your name" 
-					selectOnClick="true" value="#{textBox.username}" />
-				
+				<dsf:textBox placeHolder="Enter your name" selectOnClick="true"
+					value="#{textBox.username}" />
+
 				<h:outputLabel value="Password: " />
-				<dsf:textBox secret="true" 
-					placeHolder="Enter your password" value="#{textBox.password}" />
-				
+				<dsf:textBox secret="true" placeHolder="Enter your password"
+					value="#{textBox.password}" />
+
 				<h:outputLabel value="" />
-				<dsf:button label="Login" style="width: 100%;">
-					<f:ajax render=":welcomeView" event="click" execute="@form"
-						 onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBoxView').performTransition('welcomeView',1,'slide');},0);}" />
+				<dsf:button label="Login" styleClass="classy" duration="500"
+					style="width:100%;font-size:15px;font-weight:bold;">
+					<f:ajax render=":textBoxWelcome" event="click" execute="@form"
+						onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBox').performTransition('textBoxWelcome',1,'slide');},0);}" />
 				</dsf:button>
 			</h:panelGrid>
 		</h:form>
-	</dsf:scrollableView>
-	
-	<dsf:scrollableView id="welcomeView">
-		<dsf:heading back="Back" moveTo="textBoxView" transition="slide"
+	</dsf:view>
+
+	<dsf:view id="textBoxWelcome">
+		<dsf:heading back="Back" moveTo="textBox" transition="slide"
 			label="Welcome to DSF, #{textBox.username}!">
 		</dsf:heading>
-	</dsf:scrollableView>
+	</dsf:view>
 </h:body>
 </html>

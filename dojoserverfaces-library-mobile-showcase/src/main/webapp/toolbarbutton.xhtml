@@ -21,41 +21,54 @@
     <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Tool Bar Button</title>
-	<style type="text/css">
-	</style>
 </h:head>
 <h:body>
-	<dsf:scrollableView id="toolBarButtonView"
-		selected="true" style="width: 300px; text-align: center;">
-		<dsf:heading label="Dashboard" id="dashboard">
-			<dsf:toolBarButton id="selectAll" label="Select All" style="float:left;display:none;" />
-			<dsf:toolBarButton id="add" icon="mblDomButtonWhitePlus" style="float:left;" />
+	<dsf:view id="toolBarButton"
+		style="text-align: center;">
+		<dsf:heading id="dashboard" label="Dashboard">
+			<dsf:toolBarButton id="selectAll" label="Select All"
+				style="float:left;display:none;" />
+			<dsf:toolBarButton id="add" icon="mblDomButtonWhitePlus"
+				style="float:left;" />
+
+			<dsf:toolBarButton id="doneBtn1" label="Done" selected="true"
+				style="float:right;display:none;">
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="selectAll" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="add" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="editBtn1" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="doneBtn1" />
+			</dsf:toolBarButton>
 			<dsf:toolBarButton id="editBtn1" label="Edit" style="float:right;">
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="selectAll" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="add" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="editBtn1" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="doneBtn1" />
-			</dsf:toolBarButton>
-			<dsf:toolBarButton id="doneBtn1" label="Done" 
-				selected="true" style="float:right;display:none;">
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="selectAll" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="add" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="editBtn1" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="doneBtn1" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="selectAll" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="add" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="editBtn1" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="doneBtn1" />
 			</dsf:toolBarButton>
 		</dsf:heading>
-		
+
 		<dsf:heading label="Home" id="home" moveTo="#" back="Dashboard">
-			<dsf:toolBarButton id="editBtn2" label="Edit" style="float:right;">
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="editBtn2" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="doneBtn2" />
+			<dsf:toolBarButton id="doneBtn2" label="Done" selected="true"
+				style="float:right;display:none;">
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="editBtn2" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="doneBtn2" />
 			</dsf:toolBarButton>
-			<dsf:toolBarButton id="doneBtn2" label="Done" 
-				selected="true" style="float:right;display:none;">
-				<dsfBehaviors:behaviorSetDisplay event="click" value="true" target="editBtn2" />
-				<dsfBehaviors:behaviorSetDisplay event="click" value="false" target="doneBtn2" />
+			<dsf:toolBarButton id="editBtn2" label="Edit" style="float:right;">
+				<dsfBehaviors:behaviorSetDisplay event="click" value="false"
+					target="editBtn2" />
+				<dsfBehaviors:behaviorSetDisplay event="click" value="true"
+					target="doneBtn2" />
 			</dsf:toolBarButton>
 		</dsf:heading>
-	</dsf:scrollableView>
+	</dsf:view>
 </h:body>
 </html>
